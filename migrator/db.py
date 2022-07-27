@@ -335,11 +335,10 @@ class Database:
         # refer to the name of the role we're inheriting from :(
         self.cur.execute(
             f"""
-        CREATE USER {shim_schema} IN ROLE {username} PASSWORD %(password)s INHERIT;
-        ALTER USER {shim_schema} SET search_path = {shim_schema}, {search_path};
-        """,
-            (password,),
+        CREATE USER {shim_schema} IN ROLE {username} PASSWORD {password!r} INHERIT;
+        """
         )
+        # ALTER USER {shim_schema} SET search_path = {shim_schema}, {search_path};
         self.cur.execute(f"CREATE SCHEMA IF NOT EXISTS {shim_schema}")
 
     def drop_shim_schema(self, revision: int) -> None:

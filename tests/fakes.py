@@ -57,7 +57,7 @@ def schema_db_url(conn: Any, schema_sql: str) -> str:
         if len(results):
             regen_all = False
             # uncomment this line to regen all schemas
-            # regen_all = True
+            regen_all = True
             if regen_all:
                 cur.execute(f"DROP DATABASE {db_name}")
             else:

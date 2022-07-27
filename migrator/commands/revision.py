@@ -2,7 +2,7 @@ import shlex
 import subprocess
 import os.path
 import textwrap
-from collections import Iterator
+from collections.abc import Iterator
 from contextlib import contextmanager
 
 import psycopg2

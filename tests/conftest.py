@@ -1,6 +1,6 @@
 import contextlib
 import os
-from collections import Iterator
+from collections.abc import Iterator
 from typing import Any
 
 import psycopg2
