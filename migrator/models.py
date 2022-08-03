@@ -140,7 +140,7 @@ class RevisionList(Dict[int, Revision]):
     def parse(dirname: str) -> RevisionList:
         assert os.path.isdir(dirname)
         revisions = {}
-        for f in glob.glob(os.path.join(dirname, "*.yml")):
+        for f in sorted(glob.glob(os.path.join(dirname, "*.yml"))):
             rev = Revision.parse(f)
             revisions[rev.number] = rev
         return RevisionList(revisions)

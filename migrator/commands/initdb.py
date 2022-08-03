@@ -1,5 +1,5 @@
-from ..logic import Context, text
-from .. import models
+from migrator.logic import Context, text
+from migrator import models
 
 
 def initdb(ctx: Context) -> None:
