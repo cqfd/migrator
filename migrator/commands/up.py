@@ -2,7 +2,10 @@ from ..logic import Context, text
 from ..logic.migrate import upgrade
 from ..logic.init import init_db
 
+import click
 
+
+@click.command('up')
 def up(ctx: Context) -> None:
     db = ctx.db()
     if not db.is_set_up():
