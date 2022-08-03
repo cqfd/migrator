@@ -333,12 +333,12 @@ class Database:
         search_path = self._fetch("SHOW search_path")[0][0]
         # TODO: why is this ALTER USER necessary?! In manual testing, $user seems to
         # refer to the name of the role we're inheriting from :(
-        self.cur.execute(
-            f"""
-        CREATE USER {shim_schema} IN ROLE {username} PASSWORD {password!r} INHERIT;
-        """
-        )
+        # self.cur.execute(
+        #     f"""
+        # CREATE USER {shim_schema} IN ROLE {username} PASSWORD {password!r} INHERIT;
         # ALTER USER {shim_schema} SET search_path = {shim_schema}, {search_path};
+        # """
+        # )
         self.cur.execute(f"CREATE SCHEMA IF NOT EXISTS {shim_schema}")
 
     def drop_shim_schema(self, revision: int) -> None:
