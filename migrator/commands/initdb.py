@@ -1,10 +1,7 @@
 from migrator.logic import Context, text
 from migrator import models
 
-import click
 
-
-@click.command('init')
 def initdb(ctx: Context) -> None:
     repo = ctx.repo()
     db = ctx.db()

@@ -356,6 +356,7 @@ def temp_db_url(control_conn: Any) -> Iterator[str]:
     db_name = "".join(random.choices("qwertyuiopasdfghjklzxcvbnm", k=10))
     cur.execute("CREATE DATABASE " + db_name)
     try:
+        # TODO(JJ): use the URL passed in control_conn
         url = os.environ["DATABASE_URL"]
         name = replace_db(url, db_name)
         yield name
